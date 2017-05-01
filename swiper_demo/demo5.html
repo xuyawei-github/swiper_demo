@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>swiper 动画</title>
+    <link rel="stylesheet" href="../lib/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="../lib/animate.min.css">
+    <style media="screen">
+      *{margin: 0;padding: 0;}
+      .swiper-container{width: 800px;height: 400px;}
+        .swiper-slide p{font-size: 30px;text-align: center;
+          line-height: 400px;color: #fff;}
+        .a{background-color: deeppink;}
+        .b{background-color: blue;}
+        .c{background-color: yellow;}
+        .d{background-color: green;}
+    </style>
+  </head>
+  <body>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide a"><p class="ani" swiper-animate-effect = "tada"
+          swiper-animate-duration="1s" swiper-animate-delay="0s">slide1</p></div>
+        <div class="swiper-slide b"><p class="ani" swiper-animate-effect = "wobble"
+          swiper-animate-duration="1s" swiper-animate-delay="0s">slide2</p></div>
+        <div class="swiper-slide c"><p class="ani" swiper-animate-effect ="shake"
+          swiper-animate-duration="1s" swiper-animate-delay="0s">slide3</p></div>
+        <div class="swiper-slide d"><p class="ani" swiper-animate-effect = "bounce"
+          swiper-animate-duration="1s" swiper-animate-delay="0s">slide4</p></div>
+      </div>
+    </div>
+    <script src="../lib/swiper-3.3.1.min.js" charset="utf-8"></script>
+  <script src="../lib/swiper.animate.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var swiper = new Swiper('.swiper-container',{
+      autoplay:1000,
+      loop:true,
+      onInit:function (swiper) {
+        swiperAnimateCache(swiper);
+        swiperAnimate(swiper);
+      },
+      onSlideChangeEnd:function (swiper) {
+        swiperAnimate(swiper);
+      }
+    })
+  </script>
+  </body>
+</html>

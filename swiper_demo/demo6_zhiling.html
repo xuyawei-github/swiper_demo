@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,
+    minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>swiper 横向轮播——zhiling</title>
+    <link rel="stylesheet" href="../lib/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="../lib/animate.min.css">
+    <style media="screen">
+      *{margin: 0;padding: 0}
+      html,body{width: 100%;height: 100%;}
+      .swiper-container{width: 100%;height: 100%;}
+      .a p{position: absolute;left: 8%;top: 70%;font-size: 20px;color: #fff;}
+      .b p:nth-of-type(1){position: absolute;left: 8%;top: 70%;font-size: 20px;color: #fff;}
+      .b p:nth-of-type(2){position: absolute;right:8%;top: 80%;font-size: 20px;color: #fff;}
+      .c p{position: absolute;left: 8%;top: 70%;font-size: 20px;color: #fff;}
+      .muted{width: 61px;height: 61px;background: url(img/music_btn.png) no-repeat;
+      background-size: 100%; position: absolute;right: 2%;top: 2%;z-index: 6;}
+    </style>
+  </head>
+  <body>
+    <audio src="img/johann_sebastian_bach_air.mp3" autoplay="" loop="" id="oa"></audio>
+    <div class="swiper-container">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide a">
+                <img src="img/zhiling1.jpg" width="100%" alt="">
+                <p class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s"
+                swiper-animate-delay="0s">志玲说</p>
+            </div>
+            <div class="swiper-slide b">
+                <img src="img/zhiling2.jpg" width="100%" alt="">
+                <p class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+                swiper-animate-delay="0s">春天很美</p>
+                <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s"
+                swiper-animate-delay="0.8s">很美</p>
+            </div>
+            <div class="swiper-slide c">
+                <img src="img/zhiling3.jpg" width="100%" alt="">
+                <p class="ani" swiper-animate-effect="rollIn" swiper-animate-duration="1s"
+                swiper-animate-delay="0s">志玲说</p>
+            </div>
+        </div>
+    </div>
+    <div class="muted animated pulse infinite"></div>
+
+    <script src="../lib/swiper-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../lib/swiper.animate.min.js" charset="utf-8"></script>
+    <script src="js/jquery-1.11.0.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    var oa = document.getElementById("oa")
+    $(".muted").click(function () {
+      if(oa.paused){
+        oa.play();
+        // console.log($(".muted"));
+        $(".muted").css({"background":"url(img/music_btn.png) no-repeat","width": "61px",
+        "height": "61px","background-size": "100%"})
+      }else {
+        oa.pause();
+        $(".muted").css({"background":"url(img/mute.png) no-repeat","width": "61px",
+        "height": "61px","background-size": "100%"})
+      }
+    })
+
+      var swiper1 = new Swiper('.swiper-container',{
+        autoplay:2000,
+        loop:true,
+        onInit:function (swiper) {
+          swiperAnimateCache(swiper);
+          swiperAnimate(swiper);
+        },
+        onSlideChangeEnd:function (swiper) {
+          swiperAnimate(swiper);
+        }
+      })
+    </script>
+  </body>
+</html>
